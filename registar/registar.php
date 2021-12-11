@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Prático</title>
-    <link rel="stylesheet" href="./login/login.css">
+    <link rel="stylesheet" href="../registar/registar.css">
     <style>
         body{
             background: rgb(9,115,121);
@@ -16,18 +16,18 @@
 <body>
     <div class="grid">
         <div class="imagem">
-            <img src="./imagens/logo.png" alt="imagem"/>
+            <img src="../imagens/logo.png" alt="imagem"/>
         </div>
-        <div class="login">
+        <div class="registo">
             <form action="index.php">
-                <br><h1>Iniciar Sessão</h1>
+                <br><h1>Criar conta</h1>
                 <div class="distanciar">
                     <br><b><label for="username">Nome de Utilizador: </label></b>
                     <input type="text" name="username" placeholder="Nome de utilizador..."/><br>
                     <br><b><label for="username">Palavra-passe: </label></b>
                     <input type="password" name="password" placeholder="Palavra-passe..."/><br>
-                    <input type="submit" value="Entrar" class="button">
-                    <button class="button2" formaction="./registar/registar.php">Registar</button>
+                    <input type="submit" value="Criar conta" class="button">
+                    <button class="button2" formaction="../login/login.php">Cancelar</button> 
                 </div>
             </form>
         </div>
