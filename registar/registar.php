@@ -9,7 +9,7 @@
     <style>
         body{
             background: rgb(9,115,121);
-            background: linear-gradient(90deg, rgba(9,115,121,1) 16%, rgba(218,216,32,1) 100%);
+            background: linear-gradient(90deg, rgba(9,115,121,1) 16%, rgba(177,218,32,1) 100%);
         }
     </style>
 </head>
@@ -22,9 +22,11 @@
             <form action="index.php">
                 <br><h1>Criar conta</h1>
                 <div class="distanciar">
-                    <br><b><label for="username">Nome de Utilizador: </label></b>
+                    <br><b><label for="nome">Nome Completo</label></b>
+                    <input type="text" name="username" placeholder="Nome Completo..."/><br>
+                    <br><b><label for="username">Nome de Utilizador</label></b>
                     <input type="text" name="username" placeholder="Nome de utilizador..."/><br>
-                    <br><b><label for="username">Palavra-passe: </label></b>
+                    <br><b><label for="username">Palavra-passe</label></b>
                     <input type="password" name="password" placeholder="Palavra-passe..."/><br>
                     <input type="submit" value="Criar conta" class="button">
                     <button class="button2" formaction="../login/login.php">Cancelar</button> 
