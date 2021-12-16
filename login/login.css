@@ -24,6 +24,15 @@ input {
     margin-bottom: 10px;
 }
 
+button {
+    width: 250px;
+    float: right;
+    margin-right: 30%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 .button {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -37,7 +46,7 @@ input {
 .button2 {
     padding: 10px;
     bottom: 0;
-    margin-top: 40px;
+    margin-top: 70px;
     font-weight: bold;
     margin-left: 25%;
     margin-right: 24%;
@@ -98,4 +107,25 @@ a.button2:visited {
     position: absolute;
     top: 0;
     left: 16px;
+}
+
+.erro {
+    color: red;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5px;
+}
+
+.error1 {
+    color: red;
+    margin-left: 30%;
+    margin-right: 20%;
+    margin-bottom: 5px;
 }
