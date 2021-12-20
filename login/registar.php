@@ -63,11 +63,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br><h1>Criar conta</h1>
                 <div class="distanciar">
                     <br><b><label for="nome">Nome Completo</label></b>
-                    <input type="text" name="nome" placeholder="Nome Completo..." required/><br>
+                    <input type="text" value="<?php echo ${'nome'} ?>" name="nome" placeholder="Nome Completo..." required/><br>
                     <br><b><label for="email">Email</label></b>
-                    <input type="text" name="email" placeholder="Email..." required/><br>
+                    <input type="text" value="<?php echo ${'email'} ?>" name="email" placeholder="Email..." required/><br>
                     <br><b><label for="passwd">Palavra-passe</label></b>
-                    <input type="password" name="passwd" placeholder="Palavra-passe..." required/><br>
+                    <input type="password" value="<?php echo ${'passwd'} ?>" name="passwd" placeholder="Palavra-passe..." required/><br>
                     <button type="submit" class="button">Criar conta</button>
                 </div>
             </form>
