@@ -50,14 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form method="POST">
         <div class="alinhar">
             <label>Descrição</label>
-            <input type="text" name="descricao" />
+            <input type="text" name="descricao" placeholder=" Ex. Aniversário da Maria no dia 16 " />
             <p>
             <label>Informação</label>
-            <input type="text" name="info" />
+            <input type="text" name="info" placeholder=" Ex. Levar a prenda " />
             </p>
             <p>
             <label>Tipo</label>
-            <input type="text" name="tipo"/>
+            <input type="text" name="tipo" placeholder="Ex. Aniversário " />
             </p>
             <button type="submit" class="button">Criar apontamento</button>
         </div>

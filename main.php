@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Prático</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <style>
+        body {
+    background-color: lightblue;
+}
+      </style>
 </head>
 <body>
 <?php
@@ -16,11 +21,11 @@
   }
   ?>
     <form method="POST" action="main.php">
-        <a class="button" href="index.php">Terminar sessão</a> 
+        <a class="button" href="index.php" id="Logioutchi" >Terminar sessão</a> 
     </form>
 
-    <h1>Lista de Apontamentos</h1>
-      <a class="" href="./crud/create.php">Adicionar apontamento</a>
+    <h1 id="tit">Lista de Apontamentos</h1>
+      <a class="" href="./crud/create.php" id="AdiApont">Adicionar apontamento</a>
     
 </body>
 </html>

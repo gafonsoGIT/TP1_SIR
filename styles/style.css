@@ -26,17 +26,18 @@ body {
 input {
     width: 500px;
     float: right;
-    margin-right: 50%;
+    margin-right: 10%;
     margin-left: auto;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 5px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .button {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 10px;
-    width: 274px;
+    width: 225px;
+    height: 25px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -46,3 +47,22 @@ input {
 .alinhar {
     text-align: center;
 }
+
+#AdiApont {
+	position: absolute; 
+	left: 550px; 
+	top: 350px; 
+	}
+
+#Logioutchi {
+    position: absolute; 
+    top: 0px;
+    right: 0px;
+        }
+#tit {
+    position: absolute; 
+    top: 250px;
+    right: 450px;
+    color: rgb(6, 84, 113);
+      }        
+    
