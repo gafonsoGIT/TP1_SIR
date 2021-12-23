@@ -20,7 +20,7 @@
     </form>
 
     <h1>Lista de Apontamentos</h1>
-      <a class="" href="./forms/create.php">Adicionar apontamento</a>
+      <a class="" href="./crud/create.php">Adicionar apontamento</a>
     
 </body>
 </html>
