@@ -15,22 +15,45 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-    margin: auto;
+    height: 45%;
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;
-    padding: 40px;
-    padding-top: 5%;
+    padding: 50px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    background-color: white;
+    margin-top: 10px;
+}
+
+.inputcontainer {
+    width: 100%;
+}
+
+label {
+    text-align: center;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 input {
     width: 500px;
-    float: right;
-    margin-right: 10%;
-    margin-left: auto;
+    height: 20px;
     padding: 5px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgrey;
+    border: none;
+}
+
+input[type=file] {
+    width: auto;
 }
 
 .button {
@@ -42,27 +65,72 @@ input {
     border: none;
     border-radius: 5px;
     background-color: lightblue;
-}
+    color: rgb(6,84,113);
 
-.alinhar {
-    text-align: center;
 }
-
-#AdiApont {
-	position: absolute; 
-	left: 550px; 
-	top: 350px; 
-	}
 
 #Logioutchi {
     position: absolute; 
     top: 0px;
     right: 0px;
-        }
-#tit {
-    position: absolute; 
-    top: 250px;
-    right: 450px;
+}
+
+.tit {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: rgb(6, 84, 113);
-      }        
+}        
+
+.erros {
+    color: red;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.buttonadd {
+    position: absolute; 
+    left: 525px;
+	top: 25%; 
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.buttonadd:hover {
+    background-color: rgb(10,145,171);
+}
     
+.buttonadd1 {
+    position: relative; 
+	top: 85%; 
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.buttonadd1:hover {
+    background-color: rgb(10,145,171);
+}
+
+.buttondel {
+    position: relative; 
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    margin-right: 30%;
+    margin-left: 250%;
+}
+
+.buttondel:hover {
+    background-color: red;
+}

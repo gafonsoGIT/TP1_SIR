@@ -22,6 +22,7 @@ input {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
+    border: none;
 }
 
 button {
@@ -36,7 +37,7 @@ button {
 .button {
     margin-top: 30px;
     margin-bottom: 10px;
-    width: 274px;
+    width: 270px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
