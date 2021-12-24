@@ -13,9 +13,9 @@ $statement->bindValue(':id', $id);
 $statement->execute();
 $apontamentos = $statement->fetch(PDO::FETCH_ASSOC);
 
-// $descricao = $apontamentos['descricao'];
-// $info = $apontamentos['info'];
-// $tipo = $apontamentos['tipo'];
+$descricao = $apontamentos['descricao'];
+$info = $apontamentos['informacao'];
+$tipo = $apontamentos['tipoApontamento'];
 
 $erros = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->bindValue(':id', $id);
 
         $statement->execute();
-        header('location: main.php');
+        header('location: ../main.php');
     }
 }
 
@@ -69,13 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <form method="POST">
         <div class="inputcontainer">
             <b><label>Descrição</label>
-            <input type="text" name="descricao" placeholder="Ex. Aniversário da Maria no dia 16"/>
+            <input type="text" name="descricao" value="<?php echo $descricao ?>"/>
             <br style="clear:both;"/>
             <b><label>Informação</label>
-            <input type="text" name="info" placeholder="Ex. Levar a prenda"/>
+            <input type="text" name="info" value="<?php echo $info ?>"/>
             <br style="clear:both;"/>
             <b><label>Tipo</label>
-            <input type="text" name="tipo" placeholder="Ex. Aniversário"/>
+            <input type="text" name="tipo" value="<?php echo $tipo ?>"/>
             <br style="clear:both;"/>
             <b><label>Foto</label>
             <input type="file" name="foto">
