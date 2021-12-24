@@ -13,6 +13,7 @@ body {
     background-color: rgb(10,145,171);
     height: 500px;
     width: 700px;
+    overflow-y: auto;
 }
 
 input {

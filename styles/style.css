@@ -16,9 +16,7 @@ body {
     transform: translate(-50%, -50%);
     width: 50%;
     height: 45%;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
+    border: none;
     padding: 50px;
     justify-content: center;
     text-align: center;
@@ -26,6 +24,7 @@ body {
     background-color: white;
     margin-top: 10px;
     overflow-y: auto;
+    box-shadow: 3px 4px 30px 1px rgba(0,0,0,0.65);
 }
 
 .inputcontainer {
