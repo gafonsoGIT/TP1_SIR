@@ -1,6 +1,12 @@
 <?php
 require_once '../database/connection.php';
 
+session_start();
+
+if (empty($_SESSION['email'])) {
+    header('location: ./login/login.php');
+}
+
 $id = $_GET['id'] ?? null;
 
 if (!$_GET['id']) {
@@ -16,12 +22,20 @@ $apontamentos = $statement->fetch(PDO::FETCH_ASSOC);
 $descricao = $apontamentos['descricao'];
 $info = $apontamentos['informacao'];
 $tipo = $apontamentos['tipoApontamento'];
+$dataRegisto = $apontamentos['dataRegisto'];
+$img_upload_path = '';
+$imageExist = false;
+$temp = '';
 
 $erros = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'];
     $info = $_POST['info'];
     $tipo = $_POST['tipo'];
+    $dataRegisto = $_POST['dataRegisto'];
+    $img_name = $_FILES['foto']['name'];
+    $img_size = $_FILES['foto']['size'];
+    $tmp_name = $_FILES['foto']['tmp_name']; 
 
     if (!$descricao) {
         $erros[] = 'A descrição é obrigatória!';
@@ -35,12 +49,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = 'O tipo é obrigatório!';
     }
 
+    if (isset($_FILES['foto'])) {
+        $img_name = $_FILES['foto']['name'];
+        $img_size = $_FILES['foto']['size'];
+        $tmp_name = $_FILES['foto']['tmp_name'];
+        $error = $_FILES['foto']['error'];
+
+        if($error === 0) {
+            if($img_size > 1000000) {
+                $erros[] = "Desculpe, a imagem não pode exceder 1mB";
+            }else {
+                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                $img_ex_lc = strtolower($img_ex);
+
+                $allowed_exs = array("jpg", "jpeg", "png");
+
+                if(in_array($img_ex_lc, $allowed_exs)) {
+                    $new_img_name  = uniqid("IMG-", true).'.'.$img_ex_lc;
+                    $img_upload_path = '../imagens/'.$new_img_name;
+                    $imageExist = true;
+                }else {
+                    $erros[] = "Formato inválido!";
+                }
+            }
+        }
+    }
+
     if (empty($erros)) {
-        $statement = $pdo->prepare("UPDATE apontamentos SET descricao = :descricao, informacao = :info, tipoApontamento = :tipo WHERE id = :id");
+        $statement = $pdo->prepare("UPDATE apontamentos SET descricao = :descricao, informacao = :info, tipoApontamento = :tipo, image_url = :img_upload_path, dataRegisto = :dataRegisto WHERE id = :id");
+
+        if(!$imageExist){
+            $temp = $apontamentos['image_url'];
+        }
         $statement->bindValue(':descricao', $descricao);
         $statement->bindValue(':info', $info);
         $statement->bindValue(':tipo', $tipo);
+        $statement->bindValue(':img_upload_path', $temp);
+        $statement->bindValue(':dataRegisto', $dataRegisto);
         $statement->bindValue(':id', $id);
+        move_uploaded_file($tmp_name, $img_upload_path);
 
         $statement->execute();
         header('location: ../main.php');
@@ -66,16 +113,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 </body>
     <div class="container">
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         <div class="inputcontainer">
+            <b><label>Tipo</label>
+            <input type="text" name="tipo" value="<?php echo $tipo ?>"/>
+            <br style="clear:both;"/>
             <b><label>Descrição</label>
             <input type="text" name="descricao" value="<?php echo $descricao ?>"/>
             <br style="clear:both;"/>
             <b><label>Informação</label>
             <input type="text" name="info" value="<?php echo $info ?>"/>
             <br style="clear:both;"/>
-            <b><label>Tipo</label>
-            <input type="text" name="tipo" value="<?php echo $tipo ?>"/>
+            <b><label>Data</label>
+            <input type="date" name="dataRegisto" value="<?php echo $dataRegisto ?>"/>
             <br style="clear:both;"/>
             <b><label>Foto</label>
             <input type="file" name="foto">

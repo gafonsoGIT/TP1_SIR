@@ -8,7 +8,7 @@ if (!$_POST['id']) {
     exit;
 }
 
-$statement = $pdo->prepare("DELETE FROM apontamentos WHERE id = :id");
+$statement = $pdo->prepare("UPDATE apontamentos SET ativo = 0 WHERE id = :id");
 $statement->bindValue(':id', $id);
 $statement->execute();
 

@@ -2,9 +2,17 @@
 
 require_once './database/connection.php';
 
-$statement = $pdo->prepare("SELECT * FROM apontamentos");
+session_start();
+
+if (empty($_SESSION['email'])) {
+    header('location: ./login/login.php');
+}
+
+$statement = $pdo->prepare("SELECT * FROM apontamentos where email = :email AND ativo = 1");
+$statement->bindValue(':email', $_SESSION['email']);
 $statement->execute();
 $apontamentos = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +31,6 @@ $apontamentos = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <?php
-  session_start();
   if(!empty($_POST['logout'])) {
       session_unset();
       session_destroy();
@@ -38,12 +45,21 @@ $apontamentos = $statement->fetchAll(PDO::FETCH_ASSOC);
             <ul>
                 <?php foreach ($apontamentos as $apontamento) : ?>
                     <li>
-                        <a href="./crud/update.php?id=<?php echo $apontamento['id'] ?>" style="color: rgb(10,145,171); float:right">Editar</a>
+                        <a href="./crud/update.php?id=<?php echo $apontamento['id'] ?>" class="edit">Editar</a>
                         <form action="./crud/delete.php" method="POST">
                             <input type="hidden" name="id" value="<?php echo $apontamento['id'] ?>">
                             <button type="submit" class="buttondel">Apagar</button>
                         </form>
-                        <h4>Descrição: </h4><?php echo ' ' . $apontamento['descricao'] . ' ' ?><h4>Informação: </h4><?php echo ' ' . $apontamento['informacao'] . ' ' ?><h4>Tipo: </h4> <?php echo ' ' . $apontamento['tipoApontamento']?>
+                        <?php if(empty($apontamento['image_url'])){?>
+                            <img src="./imagens/lembrete.png" style="width: 280px; height: 250px; margin-top: -27px; border-radius: 10px"/>
+                        <?php } else {?>
+                        <img src="<?php echo $apontamento['image_url']?>" style="width: 280px; height: 250px; margin-top: -27px; border-radius: 10px"/><?php } ?>
+                        <div class="apt">
+                            <h4>Tipo: </h4><?php echo ' ' . $apontamento['tipoApontamento'].' '?><br><br>
+                            <h4>Descrição: </h4><?php echo ' ' . $apontamento['descricao'] . ' ' ?><br><br>
+                            <h4>Informação: </h4><?php echo ' ' . $apontamento['informacao']?><br><br>
+                            <h4>Data: </h4><?php echo ' ' . $apontamento['dataRegisto']?>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             </ul>
