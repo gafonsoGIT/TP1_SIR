@@ -7,6 +7,7 @@ $passwd = '';
 
 $erro_email = '';
 $erro_password = '';
+$email_error = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -20,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $regex2 = '/^\S*(?=\S{8,})/';
     if (!preg_match($regex2, $passwd)) {
-        $erro_password = 'A password tem de ter pelo menos 8 carateres';
+        $erro_password = 'A password tem de ter pelo menos 8 carateres!';
     }
 
     if(empty($erro_email) && empty($erro_password)){
@@ -63,11 +64,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br><h1>Criar conta</h1>
                 <div class="distanciar">
                     <br><b><label for="nome">Nome Completo</label></b>
-                    <input type="text" value="<?php echo ${'nome'} ?>" name="nome" placeholder="Nome Completo..." required/><br>
+                    <input type="text" value="<?php echo ${'nome'} ?>" name="nome" placeholder="Nome Completo" required/><br>
                     <br><b><label for="email">Email</label></b>
-                    <input type="text" value="<?php echo ${'email'} ?>" name="email" placeholder="Email..." required/><br>
+                    <input type="text" value="<?php echo ${'email'} ?>" name="email" placeholder="Email" required/><br>
                     <br><b><label for="passwd">Palavra-passe</label></b>
-                    <input type="password" value="<?php echo ${'passwd'} ?>" name="passwd" placeholder="Palavra-passe..." required/><br>
+                    <input type="password" value="<?php echo ${'passwd'} ?>" name="passwd" placeholder="Palavra-passe" required/><br>
                     <button type="submit" class="button">Criar conta</button>
                 </div>
             </form>
@@ -79,6 +80,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if ($erro_password): ?>
                 <div class="error1">
                     <div><?php echo $erro_password ?></div>
+                </div>
+            <?php endif ?>
+            <?php if ($email_error): ?>
+                <div class="error1">
+                    <div><?php echo $email_error ?></div>
                 </div>
             <?php endif ?>
             <a class="button2" href="login.php">Cancelar</a> 

@@ -14,15 +14,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: 55%;
+    width: 55%;
+    height: 70%;
     border: none;
     padding: 50px;
     justify-content: center;
     text-align: center;
     display: flex;
     background-color: white;
-    margin-top: 10px;
     overflow-y: auto;
     box-shadow: 3px 4px 30px 1px rgba(0,0,0,0.65);
 }
@@ -76,10 +75,10 @@ input[type=file] {
 }
 
 .tit {
-    font-size: 40px;
+    font-size: 36px;
     font-family: "Times New Roman", Times, serif;
     position: absolute;
-    top: 10%;
+    top: 4%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(6, 84, 113);
@@ -94,10 +93,10 @@ input[type=file] {
 .buttonadd {
     position: absolute; 
     left: 50%;
-	top: 90%;
+	top: 95%;
     transform: translate(-50%, -50%);
-    width: 200px;
-    height: 35px;
+    width: 180px;
+    height: 30px;
     border: 2px solid;
     border-radius: 5px;
     font-weight: bold;
