@@ -51,9 +51,9 @@ $apontamentos = $statement->fetchAll(PDO::FETCH_ASSOC);
                             <button type="submit" class="buttondel">Apagar</button>
                         </form>
                         <?php if(empty($apontamento['image_url'])){?>
-                            <img src="./imagens/lembrete.png" style="width: 280px; height: 250px; margin-top: -27px; border-radius: 10px"/>
+                            <img src="./imagens/lembrete.png" style="width: 250px; height: 220px; margin-top: -27px; border-radius: 10px"/>
                         <?php } else {?>
-                        <img src="<?php echo $apontamento['image_url']?>" style="width: 280px; height: 250px; margin-top: -27px; border-radius: 10px"/><?php } ?>
+                        <img src="<?php echo $apontamento['image_url']?>" style="width: 250px; height: 220px; margin-top: -27px; border-radius: 10px"/><?php } ?>
                         <div class="apt">
                             <h4>Tipo: </h4><?php echo ' ' . $apontamento['tipoApontamento'].' '?><br><br>
                             <h4>Descrição: </h4><?php echo ' ' . $apontamento['descricao'] . ' ' ?><br><br>
