@@ -76,6 +76,8 @@ input[type=file] {
 }
 
 .tit {
+    font-size: 40px;
+    font-family: "Times New Roman", Times, serif;
     position: absolute;
     top: 10%;
     left: 50%;
@@ -92,10 +94,10 @@ input[type=file] {
 .buttonadd {
     position: absolute; 
     left: 50%;
-	top: 15%;
+	top: 90%;
     transform: translate(-50%, -50%);
     width: 200px;
-    height: 30px;
+    height: 35px;
     border: 2px solid;
     border-radius: 5px;
     font-weight: bold;
