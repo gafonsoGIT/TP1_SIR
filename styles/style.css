@@ -15,7 +15,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 55%;
-    height: 60%;
+    height: 67%;
     border: none;
     padding: 50px;
     justify-content: center;
@@ -132,7 +132,7 @@ input[type=file] {
     border: none;
     font-weight: bold;
     float: right;
-    margin-top: 210px;
+    margin-top: 215px;
     transform: translate(-100%, 0);
 }
 
@@ -170,5 +170,5 @@ h4 {
     margin-left: 240%;
     z-index: 10;
     color: rgb(10,145,171);
-    transform: translate(-80px,213px);
+    transform: translate(-80px,217px);
 }

@@ -25,19 +25,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if(empty($erro_email) && empty($erro_password)){
-    $statement = $pdo->prepare("INSERT INTO utilizadores(nome,email,passwd) VALUES (:nome, :email, :passwd);");
+        $encontrarEmail = $pdo->prepare("SELECT * FROM utilizadores WHERE email = :email");
+        $encontrarEmail->bindValue(':email', $email);
+        $encontrarEmail->execute();
 
-    $statement->bindValue(':nome', $nome);
-    $statement->bindValue(':email', $email);
-    $statement->bindValue(':passwd', $passwd);
+        $user = $encontrarEmail->fetch(PDO::FETCH_ASSOC);
 
-    $utilizador = $statement->execute();
+        if(!$user) {
+            $statement = $pdo->prepare("INSERT INTO utilizadores(nome,email,passwd) VALUES (:nome, :email, :passwd);");
 
-        if($utilizador){
-            header('location: ../main.php');
+            $statement->bindValue(':nome', $nome);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':passwd', $passwd);
+
+            $utilizador = $statement->execute();
+
+                if($utilizador){
+                    header('location: ../main.php');
+                }
+        } else {
+            $email_error = 'Email já existente!';
         }
-    }    
-}
+           
+    }
+}    
 ?>
 
 <!DOCTYPE html>
@@ -77,14 +88,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div><?php echo $erro_email ?></div>
                 </div>
             <?php endif ?>
+            <?php if ($email_error): ?>
+                <div class="error">
+                    <div><?php echo $email_error ?></div>
+                </div>
+            <?php endif ?>
             <?php if ($erro_password): ?>
                 <div class="error1">
                     <div><?php echo $erro_password ?></div>
-                </div>
-            <?php endif ?>
-            <?php if ($email_error): ?>
-                <div class="error1">
-                    <div><?php echo $email_error ?></div>
                 </div>
             <?php endif ?>
             <a class="button2" href="login.php">Cancelar</a> 
