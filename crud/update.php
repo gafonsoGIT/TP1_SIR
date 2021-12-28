@@ -74,13 +74,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-
+    
     if (empty($erros)) {
         $statement = $pdo->prepare("UPDATE apontamentos SET descricao = :descricao, informacao = :info, tipoApontamento = :tipo, image_url = :img_upload_path, dataRegisto = :dataRegisto WHERE id = :id");
 
         if(!$imageExist){
             $temp = $apontamentos['image_url'];
+        }else {
+            $temp = './imagens/'.$new_img_name;
         }
+
         $statement->bindValue(':descricao', $descricao);
         $statement->bindValue(':info', $info);
         $statement->bindValue(':tipo', $tipo);
@@ -129,6 +132,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <br style="clear:both;"/>
             <b><label>Foto</label>
             <input type="file" name="foto">
+            <input type = "checkbox" name = "fotocheckbox" value = "apagarfoto">
+            <label>Remover foto</label>
+            <?php
+                if(isset($_POST['fotocheckbox']) &&
+                $_POST['fotocheckbox'] == 'apagarfoto') 
+                {
+                    $statement = $pdo->prepare("UPDATE apontamentos SET image_url = '' WHERE id = :id");
+                    $statement->bindValue(':id', $id);
+                    $statement->execute();
+                }
+            ?>
             <br style="clear:both;"/>
             <button type="submit" class="buttonadd1">Atualizar apontamento</button>
             <br><a style="color: rgb(10,145,171);" href="../main.php">Cancelar</a>

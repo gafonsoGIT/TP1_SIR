@@ -72,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="login">
             <form method="POST" action="registar.php">
-                <br><h1>Criar conta</h1>
+                <br><h1 class="criar">Criar conta</h1>
                 <div class="distanciar">
                     <br><b><label for="nome">Nome Completo</label></b>
                     <input type="text" value="<?php echo ${'nome'} ?>" name="nome" placeholder="Nome Completo" required/><br>
@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif ?>
             <?php if ($erro_password): ?>
-                <div class="error1">
+                <div class="error">
                     <div><?php echo $erro_password ?></div>
                 </div>
             <?php endif ?>
